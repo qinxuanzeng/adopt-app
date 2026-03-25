@@ -67,6 +67,14 @@
 
 ## 🔗 重要链接
 
+**飞书文档:**
+- 产品方案：https://feishu.cn/docx/JbYmd3eOzoGG2VxxFkkcSg97nAc
+- UI 设计说明：https://feishu.cn/docx/RchKdVG0roWaw2x8JVfc7UAZnPd
+- 技术文档：https://feishu.cn/docx/JklSd1Y15oZmXFx3VwacJ9WjnKh
+- Figma 设计指南：https://feishu.cn/docx/F6padJP4BovfOgxHvL6cCL46n8c ⭐ 新增
+- Supabase 配置指南：https://feishu.cn/docx/F0bMd5cX1oXR0px3UXVcPg1bnBc ⭐ 新增
+
+**外部工具:**
 - 飞书文档夹：https://my.feishu.cn/drive/folder/VjadfVqJVljmlpdamZRceQGgnwd
 - Supabase: https://supabase.com
 - Figma: https://figma.com
