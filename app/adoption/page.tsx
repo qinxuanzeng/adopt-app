@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { supabase } from '@/lib/supabase'
 
@@ -14,7 +14,7 @@ const characterData = {
   '6': { name: '言溪', emoji: '👨‍🎨', gradient: 'from-sky-100 to-cyan-200' },
 }
 
-export default function AdoptionPage() {
+function AdoptionContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const characterId = searchParams.get('character') || '1'
@@ -277,5 +277,20 @@ export default function AdoptionPage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function AdoptionPage() {
+  return (
+    <Suspense fallback={
+      <div className="w-full h-screen flex items-center justify-center bg-gradient-to-b from-pink-50 to-purple-50">
+        <div className="text-center">
+          <div className="text-4xl mb-4 animate-pulse">🌸</div>
+          <div className="text-gray-500">加载中...</div>
+        </div>
+      </div>
+    }>
+      <AdoptionContent />
+    </Suspense>
   )
 }

@@ -1,9 +1,49 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+// Mock 客户端用于演示（环境变量未配置时）
+const mockSupabase = {
+  auth: {
+    signInWithOtp: async () => ({ error: null }),
+    verifyOtp: async () => ({ data: { user: { id: 'demo-user' } }, error: null }),
+    getSession: async () => ({ data: { session: null }, error: null }),
+    signOut: async () => ({ error: null }),
+  },
+  from: () => ({
+    select: () => ({
+      eq: () => ({
+        single: async () => ({ data: null, error: null }),
+        order: () => ({
+          limit: () => ({
+            select: () => ({
+              data: [],
+              error: null,
+            }),
+          }),
+        }),
+      }),
+    }),
+    insert: () => ({
+      select: () => ({
+        single: async () => ({ data: null, error: null }),
+      }),
+    }),
+    update: () => ({
+      eq: () => ({
+        select: () => ({
+          single: async () => ({ data: null, error: null }),
+        }),
+      }),
+    }),
+  }),
+}
+
+// 仅在环境变量有效时创建真实客户端
+export const supabase = supabaseUrl.startsWith('http')
+  ? createClient(supabaseUrl, supabaseAnonKey)
+  : mockSupabase as any
 
 // 类型定义
 export interface User {
