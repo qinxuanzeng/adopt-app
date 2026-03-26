@@ -152,4 +152,9 @@ MIT License
 
 **开发团队**: 阿金 & 主人  
 **开始日期**: 2026-03-25  
-**状态**: 🟡 开发中
+**状态**: ✅ 代码完成，已部署
+
+## 🔗 链接
+
+- **GitHub**: https://github.com/qinxuanzeng/adopt-app
+- **在线演示**: 待部署（Vercel）
